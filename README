@@ -1,0 +1,15 @@
+Simple tool to get poll info from http://news.ycombinator.com
+
+INSTRUCTIONS
+
+To setup the environment :
+
+pip install -r requirements.txt
+
+To run the test cases :
+
+python test_case.py
+
+To use the tool on cli :
+
+python lib/poll.py http://news.ycombinator.com/item?id=3146321
