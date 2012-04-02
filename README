@@ -13,3 +13,14 @@ python test_case.py
 To use the tool on cli :
 
 python lib/poll.py http://news.ycombinator.com/item?id=3146321
+
+To generate html from hackernews polls(default is last 10):
+
+python test_web.py
+
+To get last 2 polls :
+
+python test_web.py 2
+
+After that check the file poll.html for results.
+
