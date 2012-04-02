@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Polls from Hackernews</title>
+	<head>
+	<body>
+		<h1>Poll results </h1>
+		<ul>
+			{% for poll in polls%}
+			<li>
+				<p>{{poll.title}}</p>
+				<p>{{poll.answers}}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
