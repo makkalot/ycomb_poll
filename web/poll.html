@@ -1,16 +1,49 @@
 <html>
 	<head>
 		<title>Polls from Hackernews</title>
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+      //Load the google charts
+			google.load('visualization', '1.0', {'packages':['corechart']});
+			
+			function drawChart(poll_title,poll_data,poll_id){
+			   // Create the data table.
+        var data = new google.visualization.DataTable();
+        var answers = [];
+				data.addColumn('string', 'Answer');
+        data.addColumn('number', 'Points');
+
+				for(var i = 0; i < poll_data.length; i++){
+					answers.push([poll_data[i][1],parseInt(poll_data[i][0])]);
+				}	
+				
+				// add the collected data
+        data.addRows(answers);
+
+        // Set chart options
+        var options = {'title':poll_title,
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('answer_'+poll_id));
+        chart.draw(data, options);
+				jQuery('#answer_'+poll_id).toggle();
+			};
+		</script>
 	<head>
 	<body>
 		<h1>Poll results </h1>
 		<ul>
 			{% for poll in polls%}
 			<li>
-				<p>{{poll.title}}</p>
-				<p>{{poll.answers}}</p>
+				<p><a href="#" onclick="drawChart('{{poll.title}}',{{poll.answers}},{{loop.index}});">{{poll.title}}</a></p>
+				<div id="answer_{{loop.index}}" style="display:none">
+				</div>
 			</li>
 			{% endfor %}
 		</ul>
+		<div id="chart_div"></div>
 	</body>
 </html>

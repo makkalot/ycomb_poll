@@ -22,5 +22,5 @@ To get last 2 polls :
 
 python test_web.py 2
 
-After that check the file poll.html for results.
+After that check the file poll.html for results(Now supports visual charts).
 

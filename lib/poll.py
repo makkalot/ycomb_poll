@@ -31,7 +31,7 @@ def get_answers(html):
 			continue
 		points = points.group(1)
 		answer = option.text.strip()
-		answ_pack.append((points,answer))
+		answ_pack.append([points,answer])
 	
 	return answ_pack
 
